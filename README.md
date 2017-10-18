@@ -9,7 +9,13 @@ To model the solar panels from which the power output is derived, a 3D CAD mesh 
 ![image](assets/mesh_example.jpg)
 ![image](assets/mesh_example_2.jpg)
 
-To model the sun, equations are derived from public resources, namely [PVEducation](http://www.pveducation.org/) and [NOAA Sun Calculator](https://www.esrl.noaa.gov/gmd/grad/solcalc/). These equations are used to calculate the Sun ray vector, which is then cross-multiplied with the 3D mesh normal vectors of the car to find the power produced. 
+To model the sun, equations are derived from public resources, namely [PVEducation](http://www.pveducation.org/) and [NOAA Sun Calculator](https://www.esrl.noaa.gov/gmd/grad/solcalc/). These equations are used to calculate the Sun ray vector, which is then cross-multiplied with the 3D mesh normal vectors of the car to find the power produced. In particular, there are several parameters that must be determined when creating an accurate sun mode which were included in this program:
+* solar radiation at Earth's surface
+* atmospheric scattering 
+* air mass
+* latitude and longitude (location on Earth)
+* time of day (determines earth's rotation relative to the sun)
+* time of the year (determines earth's tilt relative to the sun)
 
 To produce the final output power, it was necessary to matrix multiply the area vectors and the Sun vector to discover the interaction between the two. 
 
