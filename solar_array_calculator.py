@@ -184,38 +184,3 @@ def car_solar_flux(lat, lon, timezone, year, month, day, hour, minute, z_rotate)
         flux = flux + temp
     return flux, area, ele_count, neg_count
 
-
-def main():
-    """Writes a text file detailing the power at each hour in a day cycle. 
-        
-        For simpler testing, automatically specifies the lat, long, timezone difference, and year (2017). Location is 
-        predefined as being in Toronto.
-        
-        Returns:
-            text file with daily power information of the car at a location in a formatted table.
-        """
-    # To test the function and get power throughout a day (hourly) in Toronto
-    print("To get power throughout the day in Toronto: ")
-    month = int(input("Specify month: "))
-    day = int(input("Specify day: "))
-    rotation = float(input("Specify clockwise rotation of car (default facing W): "))
-    output_log = 'flux_test_log.txt'
-    # silent exception, avoids calls to os.path.exists()
-    try:
-        os.remove(output_log)
-    except OSError:
-        pass
-    sys.stdout = open(output_log, 'w')
-    print("Power throughout a day @{}/{}/2017, 44N -79S, facing West + {} degrees clockwise / Power in [W]:\n"
-          .format(month, day, rotation))
-    print("{0:5} |  {1:5} | {2}\n " .format('Time', 'Power [W]', 'Negative elements'))
-    for hour in range(0, 24):
-        flux, area, e_count, n_count = car_solar_flux(43.659615, -79.395321, -5, 2017, month, day, hour, 0, rotation)
-        flux = np.round(flux, 2)
-        print("{0:2}:00 |  {1:6.2f} W  | {2:4} / {3:4}" .format(hour, flux, n_count, e_count))
-        if hour == 24:
-            print("\nTotal surface area is {0:.4f} m^2".format(area))
-
-
-if __name__ == '__main__':
-    main()
