@@ -1,5 +1,5 @@
 # Solar Array Power Calculator
-Models the power output of solar panels based on the Sun's position. 
+Models the power output of solar panels based on the Sun's position.
 
 ## Motivation
 This project was done for the University of Toronto Blue Sky Solar Racing Club. The primary goal was to highly accurately model the Sun's rays in order to find the total power produced by the solar panels at a specific time and point on Earth. The motivation behind this was to create a general model through which the team could strategize how to optimize the use energy in a week long race where small decisions may have large consequences. 
